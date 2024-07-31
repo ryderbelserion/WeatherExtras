@@ -7,4 +7,4 @@ pluginManagement {
     }
 }
 
-rootProject.name = "PluginTemplate"
+rootProject.name = "Zappy"

@@ -1,9 +1,10 @@
 name: '${name}'
 main: '${group}.${name}'
-
-authors: ${authors}
+loader: '${group}.support.DependencyLoader'
 
 version: '${version}'
 api-version: '${apiVersion}'
 description: '${description}'
 website: '${website}'
+
+folia-supported: true
