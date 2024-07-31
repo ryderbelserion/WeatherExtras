@@ -1,6 +1,7 @@
 [versions]
 # Minecraft
 paper = "1.21-R0.1-SNAPSHOT"
+minecraft = "1.21"
 
 # Libraries
 placeholderapi = "2.11.6"

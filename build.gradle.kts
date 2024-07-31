@@ -1,14 +1,10 @@
 plugins {
-    id("io.github.goooler.shadow") version "8.1.7"
-
-    id("io.papermc.paperweight.userdev") version "1.7.1"
-
-    id("xyz.jpenilla.run-paper") version "2.3.0"
+    alias(libs.plugins.paperweight)
+    alias(libs.plugins.shadowJar)
+    alias(libs.plugins.runPaper)
 
     `java-library`
 }
-
-val mcVersion = providers.gradleProperty("mcVersion").get()
 
 repositories {
     maven("https://repo.extendedclip.com/content/repositories/placeholderapi")
@@ -19,7 +15,7 @@ repositories {
 }
 
 dependencies {
-    paperweight.paperDevBundle("$mcVersion-R0.1-SNAPSHOT")
+    paperweight.paperDevBundle(libs.versions.paper)
 
     compileOnly(libs.placeholderapi)
 
@@ -42,7 +38,7 @@ tasks {
 
         defaultCharacterEncoding = Charsets.UTF_8.name()
 
-        minecraftVersion(mcVersion)
+        minecraftVersion(libs.versions.minecraft.get())
     }
 
     compileJava {
@@ -81,7 +77,7 @@ tasks {
             "version" to rootProject.version,
             "group" to rootProject.group,
             "description" to rootProject.description,
-            "apiVersion" to mcVersion,
+            "apiVersion" to libs.versions.minecraft.get(),
             "website" to providers.gradleProperty("website").get()
         )
 
