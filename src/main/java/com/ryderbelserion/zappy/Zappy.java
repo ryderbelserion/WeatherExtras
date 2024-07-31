@@ -5,7 +5,7 @@ import com.ryderbelserion.vital.paper.commands.modules.ModuleHandler;
 import com.ryderbelserion.vital.paper.commands.modules.ModuleLoader;
 import com.ryderbelserion.zappy.commands.BaseCommand;
 import com.ryderbelserion.zappy.managers.ConfigManager;
-import com.ryderbelserion.zappy.managers.WeatherStarter;
+import com.ryderbelserion.zappy.managers.ZappyManager;
 import com.ryderbelserion.zappy.modules.WeatherModule;
 import io.papermc.paper.command.brigadier.CommandSourceStack;
 import io.papermc.paper.plugin.lifecycle.event.types.LifecycleEvents;
@@ -18,14 +18,14 @@ public class Zappy extends JavaPlugin {
         return JavaPlugin.getPlugin(Zappy.class);
     }
 
-    private WeatherStarter weatherStarter;
+    private ZappyManager zappy;
 
     @Override
     public void onEnable() {
         ConfigManager.load(getDataFolder());
 
-        this.weatherStarter = new WeatherStarter().start().apply(weatherStarter -> {
-            final ModuleLoader moduleLoader = weatherStarter.getModuleLoader();
+        this.zappy = new ZappyManager().start().apply(zappy -> {
+            final ModuleLoader moduleLoader = zappy.getModuleLoader();
 
             List.of(
                     new WeatherModule()
@@ -43,16 +43,16 @@ public class Zappy extends JavaPlugin {
 
     @Override
     public void onDisable() {
-        if (this.weatherStarter != null) {
-            this.weatherStarter.apply(weatherStarter -> {
-                final ModuleLoader moduleLoader = weatherStarter.getModuleLoader();
+        if (this.zappy != null) {
+            this.zappy.apply(zappy -> {
+                final ModuleLoader moduleLoader = zappy.getModuleLoader();
 
                 moduleLoader.getModules().forEach(ModuleHandler::disable);
             });
         }
     }
 
-    public final WeatherStarter getWeatherStarter() {
-        return this.weatherStarter;
+    public final ZappyManager getZappy() {
+        return this.zappy;
     }
 }

@@ -11,21 +11,21 @@ import java.io.File;
 import java.util.function.Consumer;
 
 @SuppressWarnings("UnusedReturnValue")
-public class WeatherStarter extends Vital {
+public class ZappyManager extends Vital {
 
     private final JavaPlugin plugin = JavaPlugin.getProvidingPlugin(Zappy.class);
 
-    public WeatherStarter() {}
+    public ZappyManager() {}
 
     private ModuleLoader moduleLoader;
 
-    public final WeatherStarter start() {
+    public final ZappyManager start() {
         this.moduleLoader = new ModuleLoader();
 
         return this;
     }
 
-    public final WeatherStarter apply(final Consumer<WeatherStarter> consumer) {
+    public final ZappyManager apply(final Consumer<ZappyManager> consumer) {
         consumer.accept(this);
 
         return this;

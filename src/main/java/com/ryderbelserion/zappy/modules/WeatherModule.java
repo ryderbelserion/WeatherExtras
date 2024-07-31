@@ -10,7 +10,6 @@ import io.papermc.paper.threadedregions.scheduler.ScheduledTask;
 import org.bukkit.World;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.weather.WeatherChangeEvent;
-import org.bukkit.plugin.java.JavaPlugin;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -18,7 +17,7 @@ import java.util.UUID;
 
 public class WeatherModule extends ModuleHandler {
 
-    private final JavaPlugin plugin = JavaPlugin.getProvidingPlugin(Zappy.class);
+    private final Zappy plugin = Zappy.getPlugin();
 
     private final SettingsManager config = ConfigManager.getConfig();
 

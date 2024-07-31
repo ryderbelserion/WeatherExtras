@@ -20,9 +20,9 @@ public class BaseCommand extends Command {
     public void execute(final CommandData data) {
         ConfigManager.refresh();
 
-        this.plugin.getWeatherStarter().apply(weatherStarter -> {
+        this.plugin.getZappy().apply(zappy -> {
             // reload the module loader.
-            weatherStarter.getModuleLoader().reload();
+            zappy.getModuleLoader().reload();
         });
 
         Messages.reloaded_plugin.sendMessage(data.getCommandSender());
